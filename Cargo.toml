@@ -1,0 +1,30 @@
+[package]
+name = "blobstore-fs-hash"
+version = "0.1.0"
+edition = "2021"
+resolver = "2"
+
+[dependencies]
+anyhow = "1"
+async-trait = "0.1"
+atty = "0.2"
+base64 = "0.21"
+path-clean = "1"
+serde = "1.0"
+serde_bytes = "0.11"
+serde_json = "1.0"
+sha2 = "0.10"
+tokio = "1.17.0"
+tracing = "0.1.36"
+wasmcloud-provider-sdk = { git = "https://github.com/wasmCloud/wasmCloud.git", rev = "1089ca1", features = [
+    "otel",
+] }
+
+[[bin]]
+name = "blobstore_fs_hash"
+path = "src/main.rs"
+
+[profile.release]
+strip = true
+opt-level = "z"
+lto = true
